@@ -5,6 +5,16 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWord.Server", "EasyWord.Server\EasyWord.Server.csproj", "{E1FDFF50-A774-4129-A4D2-6AD52762EF00}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EasyWord.Server.Image2Word", "EasyWord.Server.Image2Word", "{F5C55225-B928-4576-8E29-89945EED344F}"
+	ProjectSection(SolutionItems) = preProject
+		EasyWord.Server.Image2Word\main.py = EasyWord.Server.Image2Word\main.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EasyWord.Server.TTS", "EasyWord.Server.TTS", "{33E002FB-D184-4E74-9F00-A1F6E52696E3}"
+	ProjectSection(SolutionItems) = preProject
+		EasyWord.Server.TTS\main.py = EasyWord.Server.TTS\main.py
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
