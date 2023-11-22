@@ -1,6 +1,7 @@
 ﻿using EasyWord.Server.Services;
 using EasyWord.Server.Commands;
 using Microsoft.AspNetCore.Mvc;
+using TheSalLab.GeneralReturnValues;
 
 namespace EasyWord.Server.Controllers;
 
@@ -17,8 +18,18 @@ public class HomeController {
 
     [HttpPost]
     [Route("wordComposing")]
-    public async Task<string> WordComposingAsync(
-        [FromForm] SentenceCommand command) {
-        return await _sentenceComposingService.ComposeAsync(command.Word);
+    public async Task<ServiceResultViewModel<string>> WordComposingAsync(
+        [FromForm] SentenceCommand command)
+    {
+        string sentence;
+        try
+        {
+            sentence = await _sentenceComposingService.ComposeAsync(command.Word);
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel();
+        }
+        return ServiceResult<string>.CreateSucceededResult(sentence).ToServiceResultViewModel();
     }
 }

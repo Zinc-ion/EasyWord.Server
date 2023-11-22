@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.0.0-beta5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="TheSalLab.GeneralReturnValues" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
