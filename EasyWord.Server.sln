@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWord.Server", "EasyWord.Server\EasyWord.Server.csproj", "{E1FDFF50-A774-4129-A4D2-6AD52762EF00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyWord.Server", "EasyWord.Server\EasyWord.Server.csproj", "{E1FDFF50-A774-4129-A4D2-6AD52762EF00}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EasyWord.Server.Image2Word", "EasyWord.Server.Image2Word", "{F5C55225-B928-4576-8E29-89945EED344F}"
 	ProjectSection(SolutionItems) = preProject
+		EasyWord.Server.Image2Word\Dockerfile = EasyWord.Server.Image2Word\Dockerfile
 		EasyWord.Server.Image2Word\main.py = EasyWord.Server.Image2Word\main.py
 	EndProjectSection
 EndProject
@@ -14,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EasyWord.Server.TTS", "Easy
 	ProjectSection(SolutionItems) = preProject
 		EasyWord.Server.TTS\main.py = EasyWord.Server.TTS\main.py
 	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CCE6937D-B6CD-4723-810E-2B435F8A573B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +28,10 @@ Global
 		{E1FDFF50-A774-4129-A4D2-6AD52762EF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1FDFF50-A774-4129-A4D2-6AD52762EF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1FDFF50-A774-4129-A4D2-6AD52762EF00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE6937D-B6CD-4723-810E-2B435F8A573B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE6937D-B6CD-4723-810E-2B435F8A573B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE6937D-B6CD-4723-810E-2B435F8A573B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE6937D-B6CD-4723-810E-2B435F8A573B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

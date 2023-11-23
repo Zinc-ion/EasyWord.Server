@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  easyword.server.image2word:
+    image: ${DOCKER_REGISTRY-}easywordserverimage2word
+    build:
+        context: .
+        dockerfile: EasyWord.Server.Image2Word/Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+  easyword.server:
+    image: ${DOCKER_REGISTRY-}easywordserver
+    build:
+      context: .
+      dockerfile: EasyWord.Server/Dockerfile
