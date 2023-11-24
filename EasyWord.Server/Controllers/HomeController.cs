@@ -10,9 +10,11 @@ namespace EasyWord.Server.Controllers;
 // /Home
 public class HomeController {
     private ISentenceComposingService _sentenceComposingService;
+    private ITextComposingService _textComposingService;
 
-    public HomeController(ISentenceComposingService sentenceComposingService) {
+    public HomeController(ISentenceComposingService sentenceComposingService, ITextComposingService textComposingService) {
         _sentenceComposingService = sentenceComposingService;
+        _textComposingService = textComposingService;
     }
 
 
@@ -31,5 +33,22 @@ public class HomeController {
             return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel();
         }
         return ServiceResult<string>.CreateSucceededResult(sentence).ToServiceResultViewModel();
+    }
+
+    [HttpPost]
+    [Route("textComposing")]
+    public async Task<ServiceResultViewModel<string>> TextComposingAsync(
+        [FromForm] TextCommand command)
+    {
+        string text;
+        try
+        {
+            text = await _textComposingService.ComposeTextAsync(command.words);
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel();
+        }
+        return ServiceResult<string>.CreateSucceededResult(text).ToServiceResultViewModel();
     }
 }
