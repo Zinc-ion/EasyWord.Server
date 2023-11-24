@@ -6,17 +6,18 @@ from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoToken
 import torch
 from PIL import Image
 
+#本机中的路径
+# model = VisionEncoderDecoderModel.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
+# feature_extractor = ViTImageProcessor.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
+# tokenizer = AutoTokenizer.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 
-model = VisionEncoderDecoderModel.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
-feature_extractor = ViTImageProcessor.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
-tokenizer = AutoTokenizer.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
-
-# model = VisionEncoderDecoderModel.from_pretrained(
-#     "/root/.cache/huggingface/hub/models--nlpconnect--vit-gpt2-image-captioning/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
-# feature_extractor = ViTImageProcessor.from_pretrained(
-#     "/root/.cache/huggingface/hub/models--nlpconnect--vit-gpt2-image-captioning/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
-# tokenizer = AutoTokenizer.from_pretrained(
-#     "/root/.cache/huggingface/hub/models--nlpconnect--vit-gpt2-image-captioning/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
+#docker镜像中的路径
+model = VisionEncoderDecoderModel.from_pretrained(
+     "/root/models/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
+feature_extractor = ViTImageProcessor.from_pretrained(
+     "/root/models/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
+tokenizer = AutoTokenizer.from_pretrained(
+     "/root/models/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
