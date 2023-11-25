@@ -1,4 +1,5 @@
 ﻿using Microsoft.SemanticKernel.AI.ChatCompletion;
+using System;
 
 namespace EasyWord.Server.Services.ImplService;
 
@@ -84,9 +85,10 @@ bbd
 ===例子结束===
 
 
-");
+"
+        );
 
-        chatHistory.AddUserMessage(words.ToString());
+        chatHistory.AddUserMessage(string.Join(" ", words));
 
         var reply = await _chatCompletion.GenerateMessageAsync(chatHistory);
         return reply;
