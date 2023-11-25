@@ -11,10 +11,13 @@ namespace EasyWord.Server.Controllers;
 public class HomeController {
     private ISentenceComposingService _sentenceComposingService;
     private ITextComposingService _textComposingService;
+    private IImage2WordService _image2WordService;
 
-    public HomeController(ISentenceComposingService sentenceComposingService, ITextComposingService textComposingService) {
+    public HomeController(ISentenceComposingService sentenceComposingService, ITextComposingService textComposingService, IImage2WordService image2WordService)
+    {
         _sentenceComposingService = sentenceComposingService;
         _textComposingService = textComposingService;
+        _image2WordService = image2WordService;
     }
 
 
@@ -51,4 +54,43 @@ public class HomeController {
         }
         return ServiceResult<string>.CreateSucceededResult(text).ToServiceResultViewModel();
     }
+
+    [HttpPost]
+    [Route("image2Word")]
+    public async Task<ServiceResultViewModel<string>> Image2Word(
+        [FromForm] ImageCommand command)
+    {
+        using var httpClient = new HttpClient();
+        using var formData = new MultipartFormDataContent {
+            {new StreamContent(command.File.OpenReadStream()), "file", "file"}
+        };
+        HttpResponseMessage response;
+        try
+        {
+            response = await httpClient.PostAsync(
+                "http://easyword.server.image2word:8000", formData);
+            response.EnsureSuccessStatusCode();
+        }
+        catch (Exception e)
+        {
+            return ServiceResult<string>.CreateExceptionResult(e, e.Message)
+                .ToServiceResultViewModel();
+        }
+
+        var desc = await response.Content.ReadAsStringAsync();
+        string wordAndSentence;
+        try
+        {
+            wordAndSentence = await _image2WordService.ComposeAsync(desc);
+        }
+        catch (Exception e)
+        {
+            return ServiceResult<string>.CreateExceptionResult(e, e.Message)
+                .ToServiceResultViewModel();
+        }
+
+        return ServiceResult<string>.CreateSucceededResult(wordAndSentence)
+            .ToServiceResultViewModel();
+    }
+
 }

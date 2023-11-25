@@ -1,17 +1,15 @@
 import io
-
 from fastapi import FastAPI, UploadFile
-
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
 import torch
 from PIL import Image
 
-#本机中的路径
+#LocalPath !!!do not use Chinese notes!!!
 # model = VisionEncoderDecoderModel.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 # feature_extractor = ViTImageProcessor.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 # tokenizer = AutoTokenizer.from_pretrained("D://VSCodeField//1models//models--nlpconnect--vit-gpt2-image-captioning//snapshots//dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 
-#docker镜像中的路径
+#DockerPath
 model = VisionEncoderDecoderModel.from_pretrained(
      "/root/models/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 feature_extractor = ViTImageProcessor.from_pretrained(

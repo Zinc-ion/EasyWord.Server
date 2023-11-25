@@ -16,6 +16,7 @@ public class TextComposingService : ITextComposingService
     {
         var chatHistory = _chatCompletion.CreateNewChat();
 
+        //TODO 用户输入样例需要更改，输入的是string【】.tostring，gpt会说这不是单词
         chatHistory.AddSystemMessage(@"
 你是一个根据多个英文单词生成英文范文的机器人。你根据用户发来的多个英文单词来创作范文，这些单词应至少在文中出现过一次。当用户发来非英文单词内容时，你应该提示用户输入的不是英文单词
 
@@ -58,28 +59,28 @@ many hormones that we still don't entirely understand.
 用户：
 bbd
 你：
-这不是一个英文单词
+这不是英文单词
 ===例子结束===
 
 ===例子开始===
 用户：
 好
 你：
-这不是一个英文单词
+这不是英文单词
 ===例子结束===
 
 ===例子开始===
 用户：
 英文单词
 你：
-这不是一个英文单词
+这不是英文单词
 ===例子结束===
 
 ===例子开始===
 用户：
 124313@#其￥5Qr
 你：
-这不是一个英文单词
+这不是英文单词
 ===例子结束===
 
 

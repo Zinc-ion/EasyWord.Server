@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IChatCompletionFactory, AzureChatCompletionFactory>();
 builder.Services.AddScoped<ISentenceComposingService, SentenceComposingService>();
 builder.Services.AddScoped<ITextComposingService,TextComposingService>();
+builder.Services.AddScoped<IImage2WordService, Image2WordService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
