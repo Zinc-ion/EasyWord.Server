@@ -1,5 +1,6 @@
 ﻿namespace EasyWord.Server.Services;
 
-public interface ISentenceComposingService {
+public interface ISentenceComposingService 
+{
     Task<string> ComposeAsync(string word);
 }
