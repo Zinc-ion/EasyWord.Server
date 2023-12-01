@@ -6,8 +6,7 @@ public class Image2WordService : IImage2WordService
 {
     private IChatCompletion _chatCompletion;
 
-    public Image2WordService(
-        IChatCompletionFactory chatCompletionFactory)
+    public Image2WordService(IChatCompletionFactory chatCompletionFactory)
     {
         _chatCompletion = chatCompletionFactory.GetChatCompletion();
     }
