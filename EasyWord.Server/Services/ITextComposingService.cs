@@ -2,5 +2,5 @@
 
 public interface ITextComposingService
 {
-    Task<string> ComposeTextAsync(string[] words);
+    Task<string> ComposeTextAsync(string words);
 }

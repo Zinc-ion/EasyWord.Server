@@ -22,8 +22,8 @@ public class HomeController {
 
 
     [HttpPost]
-    [Route("wordComposing")]
-    public async Task<ServiceResultViewModel<string>> WordComposingAsync(
+    [Route("sentenceComposing")]
+    public async Task<ServiceResultViewModel<string>> SentenceComposingAsync(
         [FromForm] SentenceCommand command)
     {
         string sentence;

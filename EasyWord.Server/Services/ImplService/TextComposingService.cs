@@ -13,7 +13,7 @@ public class TextComposingService : ITextComposingService
         _chatCompletion = chatCompletionFactory.GetChatCompletion();
     }
 
-    public async Task<string> ComposeTextAsync(string[] words)
+    public async Task<string> ComposeTextAsync(string words)
     {
         var chatHistory = _chatCompletion.CreateNewChat();
 

@@ -5,5 +5,5 @@ namespace EasyWord.Server.Commands;
 public class TextCommand
 {
     [Required]
-    public string[] words { get; set; }
+    public string words { get; set; }
 }

@@ -18,6 +18,9 @@ tokenizer = AutoTokenizer.from_pretrained(
      "/root/models/snapshots/dc68f91c06a1ba6f15268e5b9c13ae7a7c514084")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+print("device:", device)
+
 model.to(device)
 
 max_length = 16
