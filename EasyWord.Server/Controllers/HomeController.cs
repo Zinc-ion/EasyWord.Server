@@ -76,20 +76,19 @@ public class HomeController {
             return ServiceResult<string>.CreateExceptionResult(e, e.Message)
                 .ToServiceResultViewModel();
         }
-
+        //图片描述结构
         var desc = await response.Content.ReadAsStringAsync();
-        string wordAndSentence;
+        string descWithWordAndSentence;
         try
         {
-            wordAndSentence = await _image2WordService.ComposeAsync(desc);
+            descWithWordAndSentence = await _image2WordService.ComposeAsync(desc);
         }
         catch (Exception e)
         {
             return ServiceResult<string>.CreateExceptionResult(e, e.Message)
                 .ToServiceResultViewModel();
         }
-
-        return ServiceResult<string>.CreateSucceededResult(wordAndSentence)
+        return ServiceResult<string>.CreateSucceededResult(descWithWordAndSentence)
             .ToServiceResultViewModel();
     }
 
