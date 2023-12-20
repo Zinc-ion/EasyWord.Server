@@ -26,7 +26,7 @@ public class HomeControllerTest
         var command = new SentenceCommand { Word = "TestWord" };
 
         // Act
-        var result = await controller.WordComposingAsync(command);
+        var result = await controller.SentenceComposingAsync(command);
 
         // Assert
         Assert.IsType<ServiceResultViewModel<string>>(result);
@@ -39,7 +39,7 @@ public class HomeControllerTest
         // Arrange
         var textComposingServiceMock = new Mock<ITextComposingService>();
         textComposingServiceMock
-            .Setup(service => service.ComposeTextAsync(It.IsAny<string[]>()))
+            .Setup(service => service.ComposeTextAsync(It.IsAny<string>()))
             .ReturnsAsync("MockedText");
 
         var controller = new HomeController(
@@ -47,7 +47,7 @@ public class HomeControllerTest
             textComposingServiceMock.Object,
             Mock.Of<IImage2WordService>());
 
-        var command = new TextCommand() { words = new string[] { "Word1", "Word2" } };
+        var command = new TextCommand() { words = "Word1 Word2"};
 
         // Act
         var result = await controller.TextComposingAsync(command);
