@@ -13,6 +13,7 @@ builder.Services.AddScoped<IChatCompletionFactory, AzureChatCompletionFactory>()
 builder.Services.AddScoped<ISentenceComposingService, SentenceComposingService>();
 builder.Services.AddScoped<ITextComposingService,TextComposingService>();
 builder.Services.AddScoped<IImage2WordService, Image2WordService>();
+builder.Services.AddScoped<IText2ImageService, Text2ImageService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -12,12 +12,15 @@ public class HomeController {
     private ISentenceComposingService _sentenceComposingService;
     private ITextComposingService _textComposingService;
     private IImage2WordService _image2WordService;
+    private IText2ImageService _text2ImageService;
 
-    public HomeController(ISentenceComposingService sentenceComposingService, ITextComposingService textComposingService, IImage2WordService image2WordService)
+    public HomeController(ISentenceComposingService sentenceComposingService, ITextComposingService textComposingService
+        , IImage2WordService image2WordService, IText2ImageService text2ImageService)
     {
         _sentenceComposingService = sentenceComposingService;
         _textComposingService = textComposingService;
         _image2WordService = image2WordService;
+        _text2ImageService = text2ImageService;
     }
 
 
@@ -92,4 +95,22 @@ public class HomeController {
             .ToServiceResultViewModel();
     }
 
+    //根据例句生成图片
+    [HttpPost]
+    [Route("text2Image")]
+    public async Task<ServiceResultViewModel<string>> Text2Image(
+        [FromForm] SentenceCommand command)
+    {
+        string sentence;
+        try
+        {
+            sentence = await _text2ImageService.ComposeAsync(command.Word);
+        }
+        catch (Exception ex)
+        {
+            return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel();
+        }
+        return ServiceResult<string>.CreateSucceededResult(sentence).ToServiceResultViewModel();
+
+    }
 }
