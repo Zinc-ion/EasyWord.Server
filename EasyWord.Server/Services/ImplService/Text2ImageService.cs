@@ -1,14 +1,19 @@
 ﻿using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
 using TheSalLab.GeneralReturnValues;
 
 namespace EasyWord.Server.Services.ImplService;
 
 public class Text2ImageService : IText2ImageService
 {
+
+    private const string TextToImageApiUrl =
+        "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/text2image/sd_xl";
     public async Task<string> ComposeAsync(string sentence)
     {
+        Console.WriteLine(sentence);
         var client = new RestClient($"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/text2image/sd_xl?access_token={GetAccessToken()}");
         client.Timeout = -1;
         var request = new RestRequest(Method.POST);
@@ -21,9 +26,32 @@ public class Text2ImageService : IText2ImageService
         Console.WriteLine(response.Content);
         return response.Content;
 
-    }
 
-    
+    //     string requestBody = @"
+    // {
+    //  ""prompt"": """ + sentence + @""",
+    //  ""negative_prompt"": ""white"",
+    //  ""size"": ""768x768""           
+    // }";
+    //
+    //
+    //
+    // private string token = GetAccessToken();
+    //
+    // string url = $"{TextToImageApiUrl}?access_token={token}";
+    //     using (HttpClient client = new HttpClient())
+    // {
+    //     StringContent content = new StringContent(requestBody);
+    //
+    //
+    //     HttpResponseMessage response = await client.PostAsync(url, content);
+    //     string responseContent = await response.Content.ReadAsStringAsync();
+        //
+        //
+        // return responseContent;
+
+
+    }
 
     public string GetAccessToken()
     {

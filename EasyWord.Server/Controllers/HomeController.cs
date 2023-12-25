@@ -98,19 +98,19 @@ public class HomeController {
     //根据例句生成图片
     [HttpPost]
     [Route("text2Image")]
-    public async Task<ServiceResultViewModel<string>> Text2Image(
-        [FromForm] SentenceCommand command)
+    public async Task<string> Text2Image([FromQuery(Name = "command")] string command)
     {
-        string sentence;
+
+        string data;
         try
         {
-            sentence = await _text2ImageService.ComposeAsync(command.Word);
+            data = await _text2ImageService.ComposeAsync(command);
         }
         catch (Exception ex)
         {
-            return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel();
+            return ServiceResult<string>.CreateExceptionResult(ex, ex.Message).ToServiceResultViewModel().ToString();
         }
-        return ServiceResult<string>.CreateSucceededResult(sentence).ToServiceResultViewModel();
+        return data;
 
     }
 }
