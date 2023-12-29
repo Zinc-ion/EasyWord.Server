@@ -25,32 +25,6 @@ public class Text2ImageService : IText2ImageService
         IRestResponse response = client.Execute(request);
         Console.WriteLine(response.Content);
         return response.Content;
-
-
-    //     string requestBody = @"
-    // {
-    //  ""prompt"": """ + sentence + @""",
-    //  ""negative_prompt"": ""white"",
-    //  ""size"": ""768x768""           
-    // }";
-    //
-    //
-    //
-    // private string token = GetAccessToken();
-    //
-    // string url = $"{TextToImageApiUrl}?access_token={token}";
-    //     using (HttpClient client = new HttpClient())
-    // {
-    //     StringContent content = new StringContent(requestBody);
-    //
-    //
-    //     HttpResponseMessage response = await client.PostAsync(url, content);
-    //     string responseContent = await response.Content.ReadAsStringAsync();
-        //
-        //
-        // return responseContent;
-
-
     }
 
     public string GetAccessToken()
